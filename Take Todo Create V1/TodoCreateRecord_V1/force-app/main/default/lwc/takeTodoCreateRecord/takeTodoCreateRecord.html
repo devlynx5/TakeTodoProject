@@ -1,0 +1,34 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+            Create a Todo
+        </h3>
+
+        <div slot="footer">
+                <!-- footer of lightning card, handleSavedo is what hands the process that takes variables and pushes it to database -->
+               <lightning-button label="Create Todo" onclick={handleSaveTodo} variant="brand"></lightning-button>
+        </div>
+        
+        <div class="slds-p-horizontal_small">
+            <!-- handleXChange is used to store said variables which is then passed to the aforementioned comment "handleSavedo"-->
+            <lightning-input type="text" label="Todo Name" value={todoRecord.Name} onchange={handleNameChange} placeholder="Enter Name here..."></lightning-input>
+            <lightning-input type="tel" label="Phone" name="phone3" value={todoRecord.Phone} onchange={handlePhoneChange}></lightning-input>
+        </div>  
+
+        <template if:true={todoOptionsList}>
+            <!-- once there is an todoOptionList, beins the process of looping through and displaying each item from the databasse -->
+            <div class="slds-m-around_medium">
+                <lightning-combobox
+                name="Todo Type"
+                label="Todo Type"
+                value={selectedtodo}
+                placeholder="Select Type"
+                options={todoOptionsList}
+                onchange={handleTypeChange} ></lightning-combobox> 
+                </div>
+
+                </template>    
+                   
+    </lightning-card>
+</template>
